@@ -16,34 +16,41 @@
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       overflow: hidden;
     }
+
     .card {
       background: rgba(255, 255, 255, 0.9);
-      padding: 40px;
+      padding: 5vw; /* responsive padding */
       border-radius: 25px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.2);
       text-align: center;
       position: relative;
       z-index: 2;
       animation: pop 1s ease;
+      max-width: 90%;
     }
+
     @keyframes pop {
       0% { transform: scale(0.5); opacity: 0; }
       100% { transform: scale(1); opacity: 1; }
     }
+
     h1 {
-      font-size: 3rem;
+      font-size: clamp(1.8rem, 5vw, 3rem); /* scales smoothly */
       color: #ff4081;
       margin-bottom: 10px;
+      word-wrap: break-word;
     }
+
     p {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.3rem);
       color: #444;
     }
+
     .balloon {
       position: absolute;
       bottom: -150px;
-      width: 60px;
-      height: 80px;
+      width: 50px;
+      height: 70px;
       background: red;
       border-radius: 50%;
       animation: floatUp 8s linear infinite;
@@ -58,15 +65,16 @@
       background: #333;
       transform: translateX(-50%);
     }
+
     @keyframes floatUp {
       0% { transform: translateY(0); opacity: 1; }
       100% { transform: translateY(-120vh); opacity: 0; }
     }
+
     .confetti {
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background: gold;
+      width: 8px;
+      height: 8px;
       top: -10px;
       animation: fall 5s linear infinite;
     }
@@ -74,6 +82,7 @@
       0% { transform: translateY(0) rotate(0); }
       100% { transform: translateY(110vh) rotate(720deg); }
     }
+
     .btn {
       display: inline-block;
       margin-top: 20px;
@@ -83,11 +92,23 @@
       border: none;
       border-radius: 25px;
       cursor: pointer;
-      font-size: 1rem;
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
       transition: background 0.3s;
     }
     .btn:hover {
       background: #e91e63;
+    }
+
+    /* 📱 Responsive tweaks */
+    @media (max-width: 480px) {
+      .card {
+        padding: 20px;
+        border-radius: 15px;
+      }
+      .balloon {
+        width: 40px;
+        height: 60px;
+      }
     }
   </style>
 </head>
@@ -124,8 +145,7 @@
     // Surprise song
     function playSurprise() {
       document.getElementById("song").play();
-     alert("🎉✨ Surprise Pooja! ✨🎉\n\n🎂 Wishing you the happiest Birthday ever!\n💖 May your day be filled with love, laughter, and endless joy!\n🌟 May all your dreams come true! 🌟\n\n🥳 Let's celebrate YOU today! 🎁🎶");
-
+      alert("🎉✨ Surprise Pooja! ✨🎉\n\n🎂 Wishing you the happiest Birthday ever!\n💖 May your day be filled with love, laughter, and endless joy!\n🌟 May all your dreams come true! 🌟\n\n🥳 Let's celebrate YOU today! 🎁🎶");
     }
   </script>
 </body>
